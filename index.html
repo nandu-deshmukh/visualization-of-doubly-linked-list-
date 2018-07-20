@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <title> Doubly linked list Visualization</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style type="text/css">
+    .codelike-animation{
+      background-color: #FFFFFF;
+      box-shadow: 0 0 5px #777777;
+    }
+    .codelike-text-header {
+          font-size: 15px;
+      background-color: #f9f9f9;
+      border-bottom: 1px solid #E7E7E7;
+
+      font-weight: bold;
+      line-height: 50px;
+      text-align: center;
+      text-transform: uppercase;
+      position: relative;
+    }
+    .codelike-text-block{
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      font-weight: inherit;
+      font-style: inherit;
+      font-size: 100%;
+      font-family: inherit;
+      
+      vertical-align: baseline;
+    }
+    .codelike-text-footer {
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      font-weight: inherit;
+      font-style: inherit;
+      font-size: 100%;
+      font-family: inherit;
+      vertical-align: baseline;
+      margin-bottom: 50px;
+      background-color: #F3F3F3;
+    }
+
+    .codelike-operation-manager{
+     line-height: 40px;
+     text-align: center;
+   }
+   .codelike-linked-list-svg{
+     background-color: #FFFFFF;
+     border-left: 16px solid #f9f9f9!important;
+     border-left: 1px solid #ddd;
+   }
+   .codelike-operation-manager >button {
+    background: slategrey;
+    color: white;
+  }
+  #brand{
+    height: 86px;
+
+  }
+  #linked_data_input{
+    line-height: 28px;
+  }
+  #linke_list_message{
+    color: #227c86;
+    font-size: 18px;
+    font-family: monospace;
+  }
+  .codelike-output-controller {
+    margin-top: -10px;
+    padding-top: 1px;
+  }
+  #input_text::-webkit-input-placeholder {
+    color: #b2cde0
+  }
+    .changeBSTcss{
+    margin-bottom: 10px;
+    text-align: center;
+    padding-bottom: 10px;
+    background: white;
+  }
+</style>
+
+
+</head>
+
+<body>
+<!-- Modal -->
+<div id="codelike-visualization-model" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Codelike visualization</h4>
+      </div>
+      <div id="controller-body">
+        <div class="modal-body" id="codelike-visualization-body">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+  <div class="container">
+    <div class="row">
+      <div class="codelike-animation">
+
+        <div class="codelike-text-header">
+         Linked list Visualization
+
+       </div>
+       <div class="codelike-text-block">
+
+
+
+        <div   class="codelike-linked-list-svg" id="codelike-linked-list-svg">
+
+          <svg   id="linked_list_svg" xmlns="http://www.w3.org/2000/svg" width="100%" height='450' xmlns:xlink="http://www.w3.org/1999/xlink"  >
+            <defs>
+              <marker id="arrow_link" markerWidth="12" markerHeight="12" refX="0" refY="3" orient="auto" markerUnits="strokeWidth">
+                <path d="M0,0 L0,6 L6,3 z" id="markers" fill="black" />
+              </marker>
+            </defs>
+            <g>
+              <rect x="10" y="50" width="40px" height="30" fill="white" stroke-width="1px" stroke="black" id="root_pointer"></rect> 
+              <text x="10" y="40"  stroke-width="0.5" fill="black"  font-size="17px">head</text>
+              
+              <rect x="10" y="350" width="40px" height="30" fill="white" stroke-width="1px" stroke="black" id="tialNode"></rect> 
+
+              <polyline points="20,350,21,350" id="tail_connected" stroke="black" stroke-width="1px" marker-end="url(#arrow_link)" fill="none"></polyline>
+             
+              <text x="10" y="340"  id="tailData" stroke-width="0.5" fill="black"  font-size="17px">Tail</text>
+            </g>
+          </svg>
+        </div>
+      </div>
+
+      <div class="codelike-text-footer">
+                <p class="btn" data-toggle="collapse" data-target="#styleLike" > Change Color</p>
+         <div class="changeBSTcss collapse" id="styleLike">
+          <h2>Change Default Color</h2>
+          <br> 
+          <span> Arrow Color <input type="color" name="arrowColor" id="arrowColor" value="#000000"> </span>
+          <span> Rect Color  <input type="color" name="rectColor" id="rectColor" value="#000000"> </span>
+          <span> Line Color <input type="color" name="lineColor" id="lineColor" value="#000000"> </span>
+          <span> Text Color <input type="color" name="textColor" id="textColor" value="#4db334"> </span>
+        
+          <br>
+          
+          <button  type="button"  class="btn btn-default bstBtn" id="linkedUrl">Get Url
+           </button> 
+        </div>
+        <div class="codelike-operation-manager">
+          <div class="codelike-output-controller">
+            <h5> << OUTPUT >> </h5>
+            <p id="linke_list_message"></p>
+          </div>
+          
+          <input  class="input_text" id="linked_data_input" pattern="[0-9]" maxlength="4" name="linked_data_input" placeholder="Insert Data">
+
+          <button type="button"  id="insert_using_stack" class="btn btn-default LinklistBtn">Insert Node At Start </button>    
+          <button type="button"  id="insert_mid_element_on_linked_list" class="btn btn-default LinklistBtn"> Insert Node At Middle</button>
+          <button type="button"  id="insert_using_queue" class="btn btn-default LinklistBtn">Insert Node At Last </button>
+          <button type="button"  id="insert_node_at_position" class="btn btn-default LinklistBtn"> Insert Node At Given position </button>
+           
+          <button type="button"  id="find_mid_on_linked_list" class="btn btn-default LinklistBtn"> Find Mid element</button> 
+
+          <button type="button"  id="find_linked_list_data_node" class="btn btn-default LinklistBtn">Find Any Data </button>
+          <button type="button"  id="print_linked_list_data" class="btn btn-default LinklistBtn">Print All Data</button>    
+          
+          <button type="button"  id="sum_of_nodes" class="btn btn-default LinklistBtn">Sum of All nodes</button>   
+   
+          
+          <button type="button"  id="count_linked_list_node" class="btn btn-default LinklistBtn"> Count Nodes </button>
+         
+         <button type="button"  id="delete_1st_node" class="btn btn-default LinklistBtn">Delete 1st Element</button>
+
+         <button type="button"  id="delete_mid_node" class="btn btn-default LinklistBtn">Delete Mid-Element</button>
+
+         <button type="button"  id="delete_last_node" class="btn btn-default LinklistBtn">Delete Last Element</button>
+          
+          <button type="button"  id="delete_by_data" class="btn btn-default LinklistBtn">Delete By Node Data </button>
+
+          <button type="button"  id="delete_by_position" class="btn btn-default LinklistBtn">Delete By Node position </button>
+
+           <button type="button"  id="checkData" class="btn btn-default LinklistBtn">Check Data </button>
+          
+
+          <button type="button" id="save_linked_list" class="btn btn-default LinklistBtn" >Save To SVG </button>
+    
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script src="<?php echo base_url(); ?>asset/home/js/jquery.min.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+  $('#linked_data_input,#position_linked_list').keyup(function () { 
+    this.value = this.value.replace(/[^0-9\.]/g,'');
+  });
+
+</script>
+
+<script src="./main-min.js"></script>
+<script type="text/javascript"> 
+ $("#arrowColor").on("input",function(){
+      $("#markers").attr("fill",$("#arrowColor").val());
+  });
+
+  $("#rectColor").on("input",function(){
+    $("rect").attr("stroke",$("#rectColor").val()); 
+    initial_linked_node.rect_stock=$("#rectColor").val();
+  });
+
+  $("#lineColor").on("input",function(){
+    $("line").attr("stroke",$("#lineColor").val()); 
+     $("polyline").attr("stroke",$("#lineColor").val()); 
+    initial_linked_node.line_stock=$("#lineColor").val();
+  });
+ $("#textColor").on("input",function(){
+
+    $("text").attr("stroke",$("#textColor").val()); 
+    initial_linked_node.text_stock=$("#textColor").val();
+  
+  });
+ $("#linkedUrl").click(function(){
+ $("#linke_list_message").text(baseUrl+"animation/linked-list/");
+    for(var i=0;i<linked_node.length;i++){
+         if(i==0){
+          $("#linke_list_message").append(linked_node[i].node_data);
+        }
+        else{
+          $("#linke_list_message").append("-"+linked_node[i].node_data);
+        }
+    }
+
+ });
+
+  </script>
+</body>
+</html>
