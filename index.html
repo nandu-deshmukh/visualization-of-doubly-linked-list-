@@ -209,7 +209,7 @@
   </div>
 </div>
 
-<script src="<?php echo base_url(); ?>asset/home/js/jquery.min.js"></script><script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type="text/javascript">
   $('#linked_data_input,#position_linked_list').keyup(function () { 
@@ -241,7 +241,7 @@
   
   });
  $("#linkedUrl").click(function(){
- $("#linke_list_message").text(baseUrl+"animation/linked-list/");
+ $("#linke_list_message").text("./index.html?d-");
     for(var i=0;i<linked_node.length;i++){
          if(i==0){
           $("#linke_list_message").append(linked_node[i].node_data);
