@@ -540,24 +540,30 @@ $("#checkData").click(function(){
 });
 $("#delete_mid_node").click(function(){	
 	
-	remove_temp();
-	create_find_node();
-	find_delete_mid(initialConfig.head_pointed,initialConfig.head_pointed,-1,function(mid_element,result){
-		
-		if(mid_element==initialConfig.head_pointed){
-			$("#"+node_varified.message).text(" Less then 3 Element on this linked list insert more element and  try Again");
-			enable_operation();
+	if(initialConfig.head_pointed!=-1){
+		remove_temp();
+		create_find_node();
+		find_delete_mid(initialConfig.head_pointed,initialConfig.head_pointed,-1,function(mid_element,result){
+			
+			if(mid_element==initialConfig.head_pointed){
+				$("#"+node_varified.message).text(" Less then 3 Element on this linked list insert more element and  try Again");
+				enable_operation();
 
-		}
-		else{
-			linkedOperation.deleteNode(result,function(){
-				remove_temp();
-				enable_operation();	
-			});	
-		}
-		
+			}
+			else{
+				linkedOperation.deleteNode(result,function(){
+					remove_temp();
+					enable_operation();	
+				});	
+			}
+			
 
-	});
+		});	
+	}else{
+		$("#"+node_varified.message).text(" Empty Linked List ");
+	
+	}
+	
 });
 linkedOperation.deleteFirstNode=function(done){
 		var hold=initialConfig.head_pointed;
@@ -592,7 +598,7 @@ linkedOperation.deleteFirstNode=function(done){
 }
 $("#delete_1st_node").click(function(){
 	$("#"+node_varified.message).text("");
-	if(linked_node.length>0||initialConfig.head_pointed!=0){
+	if(linked_node.length>0||initialConfig.head_pointed!=-1){
 		remove_temp();
 
 		linkedOperation.deleteFirstNode(function(){
@@ -627,7 +633,7 @@ function removeFindNode(){
 }
 $("#delete_last_node").click(function(){
 
-	if(initialConfig.ptr!=-1||linked_node.length>0){
+	if(initialConfig.head_pointed!=-1||linked_node.length>0){
 		remove_temp();
 		//create_find_node();
 		var head_value=parseInt(initialConfig.head_pointed);
@@ -685,7 +691,7 @@ linkedOperation.findDeleteNode=function(deleteValue,temp,index,done){
 
 $("#delete_by_data").click(function(){
 
-	if(initialConfig.ptr!=-1){
+	if(initialConfig.head_pointed!=-1){
 		
 		var deleteData=$("#"+node_varified.input).val(); 
 
@@ -738,7 +744,7 @@ $("#delete_by_position").click(function(){
 	$("#"+node_varified.message).text("");
 	remove_temp();
 
-	if(linked_node.length>0 ){
+	if(linked_node.length>0 &&initialConfig.head_pointed!=-1){
 
 		var find_position=$("#"+node_varified.input).val(); 
 
@@ -792,7 +798,9 @@ $("#delete_by_position").click(function(){
 
 }
 else{
-	$("#"+initialConfig.message).text("No Element in this linked list");
+
+	$("#"+node_varified.message).text("No Element in this linked list");
+	enable_operation();
 }
 });
 
@@ -980,7 +988,7 @@ $("#sum_of_nodes").click(function(){
 	$("#"+node_varified.message).text("");
 	var id=initialConfig.node_counter;
 	
-	if(id>0){	
+	if(id>0&&initialConfig.head_pointed!=-1){	
 		create_find_node();		
 		linkedOperation.sumOfData(parseInt(initialConfig.head_pointed),0,"",function(){
 			enable_operation();
@@ -990,7 +998,7 @@ $("#sum_of_nodes").click(function(){
 	else{
 		enable_operation();
 
-		$("#"+node_varified.message).text("Please fill insert data ");
+		$("#"+node_varified.message).text("Empty Linked list ");
 	}
 
 
@@ -1003,7 +1011,7 @@ $("#print_linked_list_data").click(function(){
 	$("#"+node_varified.message).text("");
 	var id=initialConfig.node_counter;
 	
-	if(id>0){	
+	if(id>0&&initialConfig.head_pointed!=-1){	
 		create_find_node();
 		
 		linkedOperation.showData(parseInt(initialConfig.head_pointed),function(){
@@ -1638,7 +1646,7 @@ $("#insert_using_queue").click(function(){
 	$("#"+node_varified.message).text("");
 	var id=initialConfig.node_counter;
 	var data=$("#"+node_varified.input).val();
-	if(data.length>0){	
+	if(data.length>0&&initialConfig.head_pointed!=-1){	
 		if(initialConfig.head_pointed==-1){
 			insert_node("start",data,id,function(){
 				$("#linke_data"+id).text(data);
@@ -1683,7 +1691,7 @@ function count_linked_list_node(index,counter,status){
 }
 
 $("#count_linked_list_node").click(function(){
-	if(linked_node.length>0){
+	if(linked_node.length>0&&initialConfig.head_pointed!=-1){
 		var head_node=initialConfig.head_pointed;
 		remove_temp();
 		create_find_node();
@@ -1703,7 +1711,7 @@ $("#count_linked_list_node").click(function(){
 
 
 $("#find_mid_on_linked_list").click(function(){
-	if(linked_node.length>2&&linked_node[initialConfig.head_pointed].next_ptr!=-1){
+	if(linked_node.length>2&&initialConfig.head_pointed!=-1&&linked_node[initialConfig.head_pointed].next_ptr!=-1&&linked_node[linked_node[initialConfig.head_pointed].next_ptr].next_ptr!=-1){
 		remove_temp();
 		create_find_node();
        
